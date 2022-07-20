@@ -11,11 +11,10 @@ library(RSelenium)
 library(hms)
 
 source("R/credentials_shinyauthr.R")
-source("R/mod_daily_delay_01.R")
+#source("R/mod_daily_delay_01.R")
+source("R/mod_AC_load.R")
 str_c("R/",list.files("R", pattern = "tab_")) %>% map(source)
-str_c("R/",list.files("R", pattern = "mod_dailydelay_fct")) %>% map(source)
-
-
+#str_c("R/",list.files("R", pattern = "mod_dailydelay_fct")) %>% map(source)
 
 
 
@@ -27,10 +26,39 @@ ui <- fluidPage(
   title = "",
   id = "tabs", # must give id here to add/remove tabs in server
   collapsible = TRUE,
-  login_tab
+  tab_login
 ))
 
 server <- function(input, output, session) {
+
+    mod_daily_delay_01_server("id")
+  mod_AC_load_server("A/C_load")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  ###########################################################################################
+  ########## En bas de cette ligne c'est le code pour gérer les accès par utilisateur #######
+  ###########################################################################################
+
+
+
   # hack to add the logout button to the navbar on app launch
   insertUI(
     selector = ".navbar .container-fluid .navbar-collapse",
@@ -95,7 +123,7 @@ server <- function(input, output, session) {
     }
   })
 
-  mod_daily_delay_01_server("id")
+
 }
 
 shinyApp(ui, server)

@@ -22,7 +22,9 @@ ui <- fluidPage(
   fluidRow(column(4,h3("mod_daily_delay_04_ui")),
            column(8,mod_daily_delay_04_ui("id"))),
   fluidRow(column(4,h3("mod_daily_delay_05_ui"))),
-  fluidRow(8,mod_daily_delay_05_ui("id"))
+  fluidRow(8,mod_daily_delay_05_ui("id")),
+  fluidRow(column(4,h3("mod_daily_delay_0_ui"))),
+  fluidRow(8,mod_daily_delay_0_ui("id"))
 )
 
 server <- function(input, output, session) {
