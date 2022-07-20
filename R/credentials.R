@@ -1,3 +1,5 @@
+
+#fichier pour shinymanager
 credentials <- data.frame(
   user = c("Julian", "Mathieu","dispatch","Hugo"), # mandatory
   password = c("Pascan2022", "Pascan2022","Pascan2022","admin"), # mandatory

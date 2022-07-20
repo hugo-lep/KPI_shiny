@@ -13,7 +13,7 @@ library(hms)
 source("R/credentials_shinyauthr.R")
 source("R/mod_daily_delay_01.R")
 str_c("R/",list.files("R", pattern = "tab_")) %>% map(source)
-#source("R/fct_access.R")
+str_c("R/",list.files("R", pattern = "mod_dailydelay_fct")) %>% map(source)
 
 
 
@@ -24,7 +24,7 @@ str_c("R/",list.files("R", pattern = "tab_")) %>% map(source)
 ui <- fluidPage(
   titlePanel(title = "Aviation NumbeRs"),
   navbarPage(
-  title = "shinyauthr example",
+  title = "",
   id = "tabs", # must give id here to add/remove tabs in server
   collapsible = TRUE,
   login_tab
@@ -94,6 +94,8 @@ server <- function(input, output, session) {
 #      }
     }
   })
+
+  mod_daily_delay_01_server("id")
 }
 
 shinyApp(ui, server)
